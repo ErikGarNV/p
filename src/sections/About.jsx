@@ -8,7 +8,7 @@ const About = () => {
   const text = `Apasionado por la arquitectura limpia
     Construyo soluciones escalables y de alto rendimiento
     desde prototipo hasta producción`;
-  const aboutText = `Obsesionado con construir ecosistemas digitales de alto impacto—desde interfaces Three.js que desafían la web plana hasta backends robustos en Python. No solo escribo código; esculpo experiencias sensoriales donde el diseño pixel-perfect se encuentra con la ingeniería de datos.
+  const aboutText = `Consigo la mejor calidad al construir ecosistemas digitales de alto impacto—desde interfaces Three.js que desafían la web plana hasta backends robustos en Python. No solo escribo código; esculpo experiencias sensoriales donde el diseño pixel-perfect se encuentra con la ingeniería de datos.
 
 Mi stack de ejecución:
 
