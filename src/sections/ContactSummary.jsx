@@ -6,18 +6,18 @@ import gsap from "gsap";
 const ContactSummary = () => {
   const containerRef = useRef(null);
   const items = [
-    "Innovation",
-    "Precision",
-    "Trust",
-    "Collaboration",
-    "Excellence",
+    "Innovación",
+    "Precisión",
+    "Confianza",
+    "Colaboración",
+    "Excelencia",
   ];
   const items2 = [
-    "contact us",
-    "contact us",
-    "contact us",
-    "contact us",
-    "contact us",
+    "contáctanos",
+    "contáctanos",
+    "contáctanos",
+    "contáctanos",
+    "contáctanos",
   ];
 
   useGSAP(() => {
@@ -41,16 +41,16 @@ const ContactSummary = () => {
       <Marquee items={items} />
       <div className="overflow-hidden font-light text-center contact-text-responsive">
         <p>
-          “ Let’s build a <br />
-          <span className="font-normal">memorable</span> &{" "}
-          <span className="italic">inspiring</span> <br />
-          web application <span className="text-gold">together</span> “
+          “ Construyamos una <br />
+          <span className="font-normal">memorable</span> e{" "}
+          <span className="italic">inspiradora</span> <br />
+          aplicación web <span className="text-gold">juntos</span> “
         </p>
       </div>
       <Marquee
         items={items2}
         reverse={true}
-        className="text-black bg-transparent border-y-2"
+        className="text-white font-black bg-transparent border-y-2 drop-shadow-lg"
         iconClassName="stroke-gold stroke-2 text-primary"
         icon="material-symbols-light:square"
       />

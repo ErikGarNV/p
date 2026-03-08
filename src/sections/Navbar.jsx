@@ -6,163 +6,100 @@ import { Link } from "react-scroll";
 
 const Navbar = () => {
   const navRef = useRef(null);
-  const linksRef = useRef([]);
-  const contactRef = useRef(null);
-  const topLineRef = useRef(null);
-  const bottomLineRef = useRef(null);
-  const tl = useRef(null);
-  const iconTl = useRef(null);
+  const menuContentRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [showBurger, setShowBurger] = useState(true);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   useGSAP(() => {
-    gsap.set(navRef.current, { xPercent: 100 });
-    gsap.set([linksRef.current, contactRef.current], {
-      autoAlpha: 0,
-      x: -20,
-    });
-
-    tl.current = gsap
-      .timeline({ paused: true })
-      .to(navRef.current, {
-        xPercent: 0,
-        duration: 1,
-        ease: "power3.out",
-      })
-      .to(
-        linksRef.current,
-        {
-          autoAlpha: 1,
-          x: 0,
-          stagger: 0.1,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "<"
-      )
-      .to(
-        contactRef.current,
-        {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        "<+0.2"
-      );
-
-    iconTl.current = gsap
-      .timeline({ paused: true })
-      .to(topLineRef.current, {
-        rotate: 45,
-        y: 3.3,
-        duration: 0.3,
-        ease: "power2.inOut",
-      })
-      .to(
-        bottomLineRef.current,
-        {
-          rotate: -45,
-          y: -3.3,
-          duration: 0.3,
-          ease: "power2.inOut",
-        },
-        "<"
-      );
-  }, []);
-
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      setShowBurger(currentScrollY <= lastScrollY || currentScrollY < 10);
-
-      lastScrollY = currentScrollY;
-    };
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const toggleMenu = () => {
     if (isOpen) {
-      tl.current.reverse();
-      iconTl.current.reverse();
+      gsap.to(menuContentRef.current, {
+        clipPath: "circle(150% at 90% 10%)",
+        duration: 1.2,
+        ease: "expo.inOut",
+      });
+      gsap.from(".nav-item", {
+        y: 50,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power4.out",
+        delay: 0.4,
+      });
     } else {
-      tl.current.play();
-      iconTl.current.play();
+      gsap.to(menuContentRef.current, {
+        clipPath: "circle(0% at 90% 10%)",
+        duration: 1,
+        ease: "expo.inOut",
+      });
     }
-    setIsOpen(!isOpen);
-  };
+  }, [isOpen]);
+
   return (
     <>
-      <nav
-        ref={navRef}
-        className="fixed z-50 flex flex-col justify-between w-full h-full px-10 uppercase bg-black text-white/80 py-28 gap-y-10 md:w-1/2 md:left-1/2"
-      >
-        <div className="flex flex-col text-5xl gap-y-2 md:text-6xl lg:text-8xl">
-          {["home", "services", "about", "work", "contact"].map(
-            (section, index) => (
-              <div key={index} ref={(el) => (linksRef.current[index] = el)}>
-                <Link
-                  className="transition-all duration-300 cursor-pointer hover:text-white"
-                  to={`${section}`}
-                  smooth
-                  offset={0}
-                  duration={2000}
-                >
-                  {section}
-                </Link>
-              </div>
-            )
-          )}
+      {/* Barra Superior Flotante */}
+      <nav className="fixed top-0 left-0 w-full z-[100] px-6 py-8 md:px-12 flex justify-end items-center pointer-events-none">
+        <div className="flex items-center gap-8 pointer-events-auto">
+          <button
+            onClick={toggleMenu}
+            className="flex items-center gap-4 group"
+          >
+            <span className="text-[10px] font-mono text-white/50 tracking-[0.3em] uppercase group-hover:text-[#00f2ff] transition-colors">
+              {isOpen ? "Cerrar" : "Menú"}
+            </span>
+            <div className="relative w-10 h-[2px] bg-white group-hover:bg-[#00f2ff] transition-all">
+              <div className={`absolute w-full h-full bg-inherit transition-transform duration-300 ${isOpen ? "rotate-45" : "-translate-y-2"}`} />
+              <div className={`absolute w-full h-full bg-inherit transition-transform duration-300 ${isOpen ? "-rotate-45" : "translate-y-2"}`} />
+            </div>
+          </button>
         </div>
-        <div
-          ref={contactRef}
-          className="flex flex-col flex-wrap justify-between gap-8 md:flex-row"
-        >
-          <div className="font-light">
-            <p className="tracking-wider text-white/50">E-mail</p>
-            <p className="text-xl tracking-widest lowercase text-pretty">
-              JohnDoe@gmail.com
-            </p>
+      </nav>
+
+      {/* Overlay del Menú Pantalla Completa */}
+      <div
+        ref={menuContentRef}
+        className="fixed inset-0 z-[90] bg-[#050505]/95 backdrop-blur-2xl flex flex-col justify-center px-10 md:px-24"
+        style={{ clipPath: "circle(0% at 90% 10%)" }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-full max-w-7xl mx-auto">
+          <div className="flex flex-col gap-4">
+            {/* Logo D.A solo visible en el menú */}
+            <a href="/" className="text-white font-black text-6xl tracking-tighter uppercase mb-12">
+              D<span className="text-[#00f2ff]">.</span>A
+            </a>
+            <p className="font-mono text-[#00f2ff] text-xs tracking-[0.5em] uppercase mb-8">Navegación</p>
+            {["home", "about", "services", "projects", "contact"].map((item, i) => (
+              <Link
+                key={item}
+                to={item}
+                smooth={true}
+                onClick={toggleMenu}
+                className="nav-item text-[12vw] md:text-[6vw] font-black uppercase leading-[0.9] text-white hover:text-[#00f2ff] transition-colors cursor-pointer inline-block"
+              >
+                <span className="text-sm font-mono mr-4 text-white/20">0{i + 1}</span>
+                {item === "home" ? "Inicio" : item}
+              </Link>
+            ))}
           </div>
-          <div className="font-light">
-            <p className="tracking-wider text-white/50">Social Media</p>
-            <div className="flex flex-col flex-wrap md:flex-row gap-x-2">
-              {socials.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="text-sm leading-loose tracking-widest uppercase hover:text-white transition-colors duration-300"
-                >
-                  {"{ "}
-                  {social.name}
-                  {" }"}
-                </a>
-              ))}
+
+          <div className="flex flex-col justify-end mt-20 lg:mt-0 lg:pl-20 border-l border-white/10">
+            <div className="mb-12 nav-item">
+              <p className="font-mono text-white/30 text-xs uppercase tracking-widest mb-4">Contacto</p>
+              <a href="mailto:duvaladrian@gmail.com" className="text-xl md:text-2xl text-white hover:text-[#00f2ff]">
+                duvaladrian@gmail.com
+              </a>
+            </div>
+
+            <div className="nav-item">
+              <p className="font-mono text-white/30 text-xs uppercase tracking-widest mb-4">Social</p>
+              <div className="flex flex-wrap gap-x-8 gap-y-2">
+                <a href="https://www.instagram.com/duval_dubai/" className="hover:text-[#00f2ff] transition-colors uppercase text-sm tracking-widest">Instagram</a>
+                <a href="https://github.com/DuvalAdrian" className="hover:text-[#00f2ff] transition-colors uppercase text-sm tracking-widest">Github</a>
+                <a href="https://www.linkedin.com/in/duval-rojas-05a5b0372/" className="hover:text-[#00f2ff] transition-colors uppercase text-sm tracking-widest">LinkedIn</a>
+              </div>
             </div>
           </div>
         </div>
-      </nav>
-      <div
-        className="fixed z-50 flex flex-col items-center justify-center gap-1 transition-all duration-300 bg-black rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20 top-4 right-10"
-        onClick={toggleMenu}
-        style={
-          showBurger
-            ? { clipPath: "circle(50% at 50% 50%)" }
-            : { clipPath: "circle(0% at 50% 50%)" }
-        }
-      >
-        <span
-          ref={topLineRef}
-          className="block w-8 h-0.5 bg-white rounded-full origin-center"
-        ></span>
-        <span
-          ref={bottomLineRef}
-          className="block w-8 h-0.5 bg-white rounded-full origin-center"
-        ></span>
       </div>
     </>
   );

@@ -1,10 +1,10 @@
-# 🌐 3D Awwwards-Level Developer Portfolio
+# 🌐 Portafolio 3D de Desarrollador Duval Adrian
 
-### Built with React, GSAP, Three.js, TailwindCSS
+### Construido con React, GSAP, Three.js, TailwindCSS
 
-This is a fully animated, interactive, 3D developer portfolio designed to **impress clients, recruiters, and hiring managers**. It's more than a portfolio—it's a web experience built with production-level code, scroll-based animations, and real-world best practices.
+Este es un portafolio de desarrollador completamente animado e interactivo en 3D diseñado para **impresionar a clientes, reclutadores y gerentes de contratación**. Es más que un portafolio—es una experiencia web construida con código de nivel producción, animaciones basadas en scroll y mejores prácticas del mundo real.
 
-> ⚡ Inspired by Awwwards-level sites — built with React (Vite), TailwindCSS, GSAP, React Three Fiber, and Drei.
+> ⚡ Inspirado en sitios de nivel Awwwards — construido con React (Vite), TailwindCSS, GSAP, React Three Fiber y Drei, con estética Glassmorphism y localización en español.
 
 <br/>
 <div>
@@ -47,13 +47,13 @@ This is a fully animated, interactive, 3D developer portfolio designed to **impr
 ## 📦 Setup & Installation
 
 ```bash
-git clone https://github.com/Ali-Sanati/awwwards-portfolio.git
+git clone https://github.com/DuvalAdrian/awwwards-portfolio.git
 cd awwwards-portfolio
 npm install
 npm run dev
 ```
 
-> Open http://localhost:5173 in your browser.
+Abre http://localhost:5173 en tu navegador.
 
 ---
 

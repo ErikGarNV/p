@@ -5,15 +5,26 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const About = () => {
-  const text = `Passionate about clean architecture
-    I build scalable, high-performance solutions
-    from prototype to production`;
-  const aboutText = `Obsessed with building fast, intuitive apps—from pixel-perfect React UIs to bulletproof serverless backends. Every line of code is a promise: quality that users feel.
-  When I’m not shipping:
-⚡️ Open-sourcing my latest experiment (or hacking on yours)
-🎥 Teaching devs on Twitch/YouTube—because rising tides lift all ships
-🧗 Rock climbing (problem-solving with real stakes)
-🎸 Strumming chords while CI pipelines pass (multitasking at its finest)`;
+  const text = `Apasionado por la arquitectura limpia
+    Construyo soluciones escalables y de alto rendimiento
+    desde prototipo hasta producción`;
+  const aboutText = `Obsesionado con construir ecosistemas digitales de alto impacto—desde interfaces Three.js que desafían la web plana hasta backends robustos en Python. No solo escribo código; esculpo experiencias sensoriales donde el diseño pixel-perfect se encuentra con la ingeniería de datos.
+
+Mi stack de ejecución:
+
+Web & Mobile: React, GSAP y arquitecturas escalables.
+
+Visual & Motion: Modelado 3D en Blender, animación y edición de video profesional.
+
+Data Ops: Automatización con Macros Excel y gestión de bases de datos.
+
+Cuando no estoy en producción:
+
+⚡️ Open-source: Liberando experimentos tácticos o rompiendo límites en el código.
+
+🧗 Escalada: Resolviendo problemas de lógica con apuestas reales en la roca.
+
+🎸 Hardcore Focus: Tocando acordes mientras los pipelines de CI confirman que todo es estable.`;
   const imgRef = useRef(null);
   useGSAP(() => {
     gsap.to("#about", {
@@ -41,8 +52,8 @@ const About = () => {
   return (
     <section id="about" className="min-h-screen bg-black rounded-b-4xl">
       <AnimatedHeaderSection
-        subTitle={"Cod with purpose, Built to scale"}
-        title={"About"}
+        subTitle={"Codifica con propósito, Construido para escalar"}
+        title={"Sobre mí"}
         text={text}
         textColor={"text-white"}
         withScrollTrigger={true}

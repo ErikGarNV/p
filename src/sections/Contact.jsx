@@ -1,82 +1,48 @@
-import { useGSAP } from "@gsap/react";
-import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import Marquee from "../components/Marquee";
 import { socials } from "../constants";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const Contact = () => {
-  const text = `Got a question, how or project Idea?
-    WE’D love to hear from you and discus further!`;
-  const items = [
-    "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
-    "just imagin, I code",
-  ];
-  useGSAP(() => {
-    gsap.from(".social-link", {
-      y: 100,
-      opacity: 0,
-      delay: 0.5,
-      duration: 1,
-      stagger: 0.3,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: ".social-link",
-      },
-    });
-  }, []);
   return (
-    <section
-      id="contact"
-      className="flex flex-col justify-between min-h-screen bg-black"
-    >
-      <div>
-        <AnimatedHeaderSection
-          subTitle={"You Dream It, I Code it"}
-          title={"Contact"}
-          text={text}
-          textColor={"text-white"}
-          withScrollTrigger={true}
-        />
-        <div className="flex px-10 font-light text-white uppercase lg:text-[32px] text-[26px] leading-none mb-10">
-          <div className="flex flex-col w-full gap-10">
-            <div className="social-link">
-              <h2>E-mail</h2>
-              <div className="w-full h-px my-2 bg-white/30" />
-              <p className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl">
-                JohnDoe@gmail.com
-              </p>
-            </div>
-            <div className="social-link">
-              <h2>Phone</h2>
-              <div className="w-full h-px my-2 bg-white/30" />
-              <p className="text-xl lowercase md:text-2xl lg:text-3xl">
-                +33 7 12 12 32 12
-              </p>
-            </div>
-            <div className="social-link">
-              <h2>Social Media</h2>
-              <div className="w-full h-px my-2 bg-white/30" />
-              <div className="flex flex-wrap gap-2">
-                {socials.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className="text-xs leading-loose tracking-wides uppercase md:text-sm hover:text-white/80 transition-colors duration-200"
-                  >
-                    {"{ "}
-                    {social.name}
-                    {" }"}
-                  </a>
-                ))}
-              </div>
+    <section id="contact" className="relative py-32 bg-[#050505] text-white overflow-hidden">
+      <div className="container mx-auto px-6 flex flex-col lg:flex-row gap-20">
+        <div className="flex-1">
+          <h2 className="text-7xl md:text-9xl font-black uppercase tracking-tighter opacity-10 absolute -left-10 select-none">
+            DUVAL
+          </h2>
+          <div className="relative z-10 mt-10">
+            <p className="text-[#00f2ff] font-mono text-sm tracking-widest uppercase mb-4">04 — Contacto</p>
+            <h3 className="text-4xl md:text-6xl font-light leading-tight">¿Tienes una visión?<br/>Yo tengo el código.</h3>
+          </div>
+        </div>
+
+        <div className="flex-1 flex flex-col gap-12 justify-end">
+          <div className="group cursor-pointer">
+            <p className="text-xs uppercase text-white/40 mb-2">Email</p>
+            <a href="mailto:duvaladrian@gmail.com" className="text-2xl md:text-4xl hover:text-[#00f2ff] transition-colors duration-500 font-light">
+              duvaladrian@gmail.com
+            </a>
+          </div>
+
+          <div>
+            <p className="text-xs uppercase text-white/40 mb-6">Conectar</p>
+            <div className="flex flex-col gap-4">
+              <a href="https://www.instagram.com/duval_dubai/" className="social-link-new hover:pl-4 transition-all duration-300">Instagram</a>
+              <a href="https://github.com/DuvalAdrian" className="social-link-new hover:pl-4 transition-all duration-300">Github</a>
+              <a href="https://www.linkedin.com/in/duval-rojas-05a5b0372/" className="social-link-new hover:pl-4 transition-all duration-300">LinkedIn</a>
             </div>
           </div>
         </div>
       </div>
-      <Marquee items={items} className="text-white bg-transparent" />
+      
+      <style jsx>{`
+        .social-link-new {
+          font-size: 1.5rem;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
+          padding-bottom: 10px;
+          display: block;
+        }
+      `}</style>
     </section>
   );
 };

@@ -1,20 +1,21 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { projects } from "../constants";
+import { projects } from "../constants"; 
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Works = () => {
-  const overlayRefs = useRef([]);
   const previewRef = useRef(null);
-
   const [currentIndex, setCurrentIndex] = useState(null);
-  const text = `Featured projects that have been meticulously
-    crafted with passion to drive
-    results and impact.`;
 
-  const mouse = useRef({ x: 0, y: 0 });
+  const text = `Proyectos destacados que han sido meticulosamente
+    elaborados con pasión para impulsar
+    resultados e impacto.`;
+
   const moveX = useRef(null);
   const moveY = useRef(null);
 
@@ -28,154 +29,140 @@ const Works = () => {
       ease: "power3.out",
     });
 
-    gsap.from("#project", {
-      y: 100,
+    gsap.from("#project-row", {
+      y: 50,
       opacity: 0,
-      delay: 0.5,
       duration: 1,
-      stagger: 0.3,
-      ease: "back.out",
+      stagger: 0.1,
+      ease: "power3.out",
       scrollTrigger: {
-        trigger: "#project",
+        trigger: "#works-container",
+        start: "top 70%",
       },
     });
-  }, []);
+  });
+
+  const handleMouseMove = (e) => {
+    moveX.current(e.clientX);
+    moveY.current(e.clientY);
+  };
 
   const handleMouseEnter = (index) => {
-    if (window.innerWidth < 768) return;
     setCurrentIndex(index);
-
-    const el = overlayRefs.current[index];
-    if (!el) return;
-
-    gsap.killTweensOf(el);
-    gsap.fromTo(
-      el,
-      {
-        clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      },
-      {
-        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-        duration: 0.15,
-        ease: "power2.out",
-      }
-    );
-
     gsap.to(previewRef.current, {
       opacity: 1,
       scale: 1,
-      duration: 0.3,
-      ease: "power2.out",
+      duration: 0.5,
+      ease: "power3.out",
     });
   };
 
-  const handleMouseLeave = (index) => {
-    if (window.innerWidth < 768) return;
+  const handleMouseLeave = () => {
     setCurrentIndex(null);
-
-    const el = overlayRefs.current[index];
-    if (!el) return;
-
-    gsap.killTweensOf(el);
-    gsap.to(el, {
-      clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-      duration: 0.2,
-      ease: "power2.in",
-    });
-
     gsap.to(previewRef.current, {
       opacity: 0,
-      scale: 0.95,
-      duration: 0.3,
-      ease: "power2.out",
+      scale: 0.8,
+      duration: 0.5,
+      ease: "power3.out",
     });
   };
 
-  const handleMouseMove = (e) => {
-    if (window.innerWidth < 768) return;
-    mouse.current.x = e.clientX + 24;
-    mouse.current.y = e.clientY + 24;
-    moveX.current(mouse.current.x);
-    moveY.current(mouse.current.y);
+  const handleLinkClick = (e, href) => {
+    if (href === "#privado") {
+      e.preventDefault();
+      alert("Servicio privado. Por favor, hablar con los dueños para solicitar acceso.");
+    }
   };
 
   return (
-    <section id="work" className="flex flex-col min-h-screen">
+    <section id="projects" className="min-h-screen bg-[#050505] text-white py-20 relative overflow-hidden">
       <AnimatedHeaderSection
-        subTitle={"Logic meets Aesthetics, Seamlessly"}
-        title={"Works"}
+        subTitle={"Ingeniería y Diseño"}
+        title={"Proyectos"}
         text={text}
-        textColor={"text-black"}
+        textColor={"text-white"}
         withScrollTrigger={true}
       />
-      <div
-        className="relative flex flex-col font-light"
-        onMouseMove={handleMouseMove}
-      >
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
-            id="project"
-            className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={() => handleMouseLeave(index)}
-          >
-            {/* overlay */}
-            <div
-              ref={(el) => {
-                overlayRefs.current[index] = el;
-              }}
-              className="absolute inset-0 hidden md:block duration-200 bg-black -z-10 clip-path"
-            />
 
-            {/* title */}
-            <div className="flex justify-between px-10 text-black transition-all duration-500 md:group-hover:px-12 md:group-hover:text-white">
-              <h2 className="lg:text-[32px] text-[26px] leading-none">
+      <div id="works-container" className="container mx-auto px-6 md:px-12 mt-20 flex flex-col">
+        {/* Línea superior */}
+        <div className="w-full h-px bg-white/20 mb-8" />
+
+        {projects.map((project, index) => (
+          <a
+            id="project-row"
+            key={project.id}
+            href={project.href}
+            target={project.href !== "#privado" ? "_blank" : "_self"}
+            rel="noopener noreferrer"
+            onClick={(e) => handleLinkClick(e, project.href)}
+            className="group relative flex flex-col md:flex-row items-start md:items-center justify-between py-10 md:py-16 border-b border-white/10 cursor-pointer hover:bg-white/[0.02] transition-colors duration-500 gap-6 md:gap-0"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={handleMouseLeave}
+          >
+            {/* Título y Número */}
+            <div className="flex items-start gap-4 lg:gap-6 md:w-[40%] shrink-0 pr-4">
+              <span className="font-mono text-xs text-[#00f2ff] mt-2 shrink-0">
+                0{index + 1}
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-[0.9] transition-colors duration-500 group-hover:text-[#00f2ff] break-words">
                 {project.name}
               </h2>
-              <Icon icon="lucide:arrow-up-right" className="md:size-6 size-5" />
             </div>
-            {/* divider */}
-            <div className="w-full h-0.5 bg-black/80" />
-            {/* framework */}
-            <div className="flex px-10 text-xs leading-loose uppercase transtion-all duration-500 md:text-sm gap-x-5 md:group-hover:px-12">
+
+            {/* Descripción */}
+            <div className="md:w-[35%] shrink-0 px-0 md:px-8">
+              <p className="text-white/60 text-sm md:text-base font-light leading-relaxed text-balance">
+                {project.description}
+              </p>
+            </div>
+
+            {/* Frameworks / Tecnologías */}
+            <div className="md:w-[20%] flex flex-wrap gap-2 shrink-0">
               {project.frameworks.map((framework) => (
-                <p
+                <span
                   key={framework.id}
-                  className="text-black transition-colors duration-500 md:group-hover:text-white"
+                  className="px-3 py-1 text-xs font-mono uppercase border border-white/20 rounded-full text-white/80"
                 >
                   {framework.name}
-                </p>
+                </span>
               ))}
             </div>
-            {/* mobile preview image */}
-            <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
-              <img
-                src={project.bgImage}
-                alt={`${project.name}-bg-image`}
-                className="object-cover w-full h-full rounded-md brightness-50"
-              />
+
+            {/* Icono de enlace */}
+            <div className="hidden md:flex justify-end md:w-[5%] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              {project.href === "#privado" ? (
+                <Icon icon="mdi:lock-outline" className="text-3xl text-white/50" />
+              ) : (
+                <Icon icon="mdi:arrow-top-right" className="text-4xl text-[#00f2ff]" />
+              )}
+            </div>
+
+            {/* Versión Mobile: Imagen inferior */}
+            <div className="w-full mt-4 md:hidden h-[250px] overflow-hidden rounded-lg">
               <img
                 src={project.image}
-                alt={`${project.name}-image`}
-                className="absolute bg-center px-14 rounded-xl"
+                alt={project.name}
+                className="w-full h-full object-cover grayscale brightness-75"
               />
             </div>
-          </div>
+          </a>
         ))}
-        {/* desktop Flaoting preview image */}
-        <div
-          ref={previewRef}
-          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-8 border-black pointer-events-none w-[960px] md:block hidden opacity-0"
-        >
-          {currentIndex !== null && (
-            <img
-              src={projects[currentIndex].image}
-              alt="preview"
-              className="object-cover w-full h-full"
-            />
-          )}
-        </div>
+      </div>
+
+      {/* Imagen flotante interactiva para Desktop */}
+      <div
+        ref={previewRef}
+        className="fixed top-0 left-0 z-50 pointer-events-none hidden md:block w-[400px] h-[300px] overflow-hidden rounded-lg shadow-2xl opacity-0 transform -translate-x-1/2 -translate-y-1/2"
+      >
+        {currentIndex !== null && (
+          <img
+            src={projects[currentIndex].image}
+            alt="preview"
+            className="w-full h-full object-cover object-center scale-110"
+          />
+        )}
       </div>
     </section>
   );

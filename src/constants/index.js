@@ -1,78 +1,78 @@
 // index.js
 export const servicesData = [
   {
-    title: "FullStack Development",
+    title: "Desarrollo FullStack",
     description:
-      "Your business deserves a fast, secure, and future-proof digital foundation. I develop custom web apps with clean architecture, optimized databases, and seamless integrations—ensuring reliability at every layer.",
+      "Tu negocio merece una base digital rápida, segura y preparada para el futuro. Desarrollo aplicaciones web personalizadas con arquitectura limpia, bases de datos optimizadas e integraciones perfectas—garantizando confiabilidad en cada capa.",
     items: [
       {
-        title: "Backend Engineering",
-        description: "(REST/GraphQL APIs, Microservices, Auth Systems)",
+        title: "Ingeniería Backend",
+        description: "(APIs REST/GraphQL, Microservicios, Sistemas de Autenticación)",
       },
       {
-        title: "Frontend Excellence",
-        description: "(React, Vue, TypeScript, Interactive UI/UX)",
+        title: "Excelencia Frontend",
+        description: "(React, Vue, TypeScript, UI/UX Interactiva)",
       },
       {
-        title: "Database Design",
-        description: "(SQL/NoSQL Optimization, Scalable Structures)",
+        title: "Diseño de Bases de Datos",
+        description: "(Optimización SQL/NoSQL, Estructuras Escalables)",
       },
     ],
   },
   {
-    title: "DevOps & Cloud Solutions",
+    title: "DevOps y Soluciones en la Nube",
     description:
-      "Deploying software shouldn't be a gamble. I automate infrastructure, enforce security, and leverage cloud platforms (AWS/Azure) to keep your app running smoothly—24/7, at any scale.",
+      "Desplegar software no debería ser un riesgo. Automatizo infraestructura, refuerzo seguridad y aprovecho plataformas en la nube (AWS/Azure) para mantener tu aplicación funcionando sin problemas—24/7, a cualquier escala.",
     items: [
       {
-        title: "CI/CD Pipelines",
+        title: "Pipelines CI/CD",
         description: "(GitHub Actions, Docker, Kubernetes)",
       },
       {
-        title: "Server Management ",
-        description: "(Linux, Nginx, Load Balancing)",
+        title: "Gestión de Servidores",
+        description: "(Linux, Nginx, Balanceo de Carga)",
       },
       {
-        title: "Performance Tuning",
-        description: "(Caching, Compression, Lighthouse 90+ Scores)",
-      },
-    ],
-  },
-  {
-    title: "Security & Optimization",
-    description:
-      "Slow or hacked apps destroy trust. I harden security (XSS/SQLI protection, OAuth) and optimize bottlenecks so your app stays fast, safe, and scalable as you grow.",
-    items: [
-      {
-        title: "Code Audits",
-        description: "(Refactoring, Tech Debt Cleanup)",
-      },
-      {
-        title: "Pen Testing",
-        description: "(Vulnerability Assessments)",
-      },
-      {
-        title: "SEO Tech Stack",
-        description: "(SSR, Metadata, Structured Data)",
+        title: "Optimización de Rendimiento",
+        description: "(Caché, Compresión, Puntajes Lighthouse 90+)",
       },
     ],
   },
   {
-    title: "Web & Mobile Apps",
+    title: "Seguridad y Optimización",
     description:
-      "A clunky interface can sink even the best ideas. I craft responsive, pixel perfect web and mobile apps (React Native/Flutter) that users love—bridging design and functionality seamlessly.",
+      "Aplicaciones lentas o hackeadas destruyen la confianza. Refuerzo la seguridad (protección XSS/SQLI, OAuth) y optimizo cuellos de botella para que tu aplicación se mantenga rápida, segura y escalable a medida que creces.",
     items: [
       {
-        title: "Cross-Platform Apps",
-        description: "(Single codebase for iOS/Android/Web)",
+        title: "Auditorías de Código",
+        description: "(Refactorización, Limpieza de Deuda Técnica)",
+      },
+      {
+        title: "Pruebas de Penetración",
+        description: "(Evaluaciones de Vulnerabilidades)",
+      },
+      {
+        title: "Stack Técnico SEO",
+        description: "(SSR, Metadatos, Datos Estructurados)",
+      },
+    ],
+  },
+  {
+    title: "Aplicaciones Web y Móviles",
+    description:
+      "Una interfaz torpe puede hundir incluso las mejores ideas. Creo aplicaciones web y móviles responsivas, pixel perfect (React Native/Flutter) que los usuarios aman—uniendo diseño y funcionalidad sin problemas.",
+    items: [
+      {
+        title: "Aplicaciones Multiplataforma",
+        description: "(Código único para iOS/Android/Web)",
       },
       {
         title: "PWAs",
-        description: "(Offline mode, Push Notifications)",
+        description: "(Modo offline, Notificaciones Push)",
       },
       {
         title: "E-Commerce",
-        description: "(Checkout flows, Payment Gateways, Inventory APIs)",
+        description: "(Flujos de Checkout, Pasarelas de Pago, APIs de Inventario)",
       },
     ],
   },
@@ -80,71 +80,70 @@ export const servicesData = [
 export const projects = [
   {
     id: 1,
-    name: "Mobile Accessories E-commerce",
+    name: "LAEQ & Asociados",
     description:
-      "An online store specializing in phone accessories including cases, chargers, cables, and power banks with MagSafe compatibility.",
-    href: "",
+      "Consultora especializada en mercados energéticos y regulación de gas natural con más de 11 años de trayectoria en el sector.",
+    href: "https://laeqasociados.com",
     image: "/assets/projects/mobile-accessories-store.jpg",
-    bgImage: "/assets/backgrounds/blanket.jpg",
+    bgImage: "/assets/backgrounds/architecture.jpg",
     frameworks: [
       { id: 1, name: "React" },
-      { id: 2, name: "Next.js" },
-      { id: 3, name: "Node.js" },
-      { id: 4, name: "MongoDB" },
-      { id: 5, name: "Tailwind CSS" },
+      { id: 2, name: "Tailwind CSS" },
+      { id: 3, name: "Framer Motion" },
+      { id: 4, name: "Three.js" },
     ],
   },
   {
     id: 2,
-    name: "Plant Shop E-commerce",
+    name: "Acomacasa",
     description:
-      "An online store specializing in rare and decorative plants with a clean, user-friendly interface.",
-    href: "",
+      "Prendas de alta costura confeccionadas con fibra de vicuña, la fibra más fina del mundo, uniendo herencia andina y elegancia atemporal",
+    href: "https://acomacasa.pe",
     image: "/assets/projects/plant-shop.jpg",
-    bgImage: "/assets/backgrounds/curtains.jpg",
+    bgImage: "/assets/backgrounds/couch.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Next.js" },
-      { id: 3, name: "Stripe API" },
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "Stripe" },
+      { id: 3, name: "Prisma" },
       { id: 4, name: "Tailwind CSS" },
     ],
   },
   {
     id: 3,
-    name: "Apple Tech Marketplace",
+    name: "Gestión de Marca de Alimentos",
     description:
-      "An e-commerce platform for Apple products and accessories with deals and category filtering.",
-    href: "",
-    image: "/assets/projects/apple-tech-store.jpg",
-    bgImage: "/assets/backgrounds/map.jpg",
+      "Una web de gestión de marca visualmente impactante para una empresa de alimentos, diseñada para atraer y retener usuarios.",
+    href: "https://olayafoods.netlify.app",
+    image: "/assets/projects/food-brand.jpg",
+    bgImage: "/assets/backgrounds/food.jpg",
     frameworks: [
-      { id: 1, name: "Blazor" },
-      { id: 2, name: "ASP.NET Core" },
-      { id: 3, name: "SQL Server" },
-      { id: 4, name: "Bootstrap" },
+      { id: 1, name: "Vue.js" },
+      { id: 2, name: "Nuxt.js" },
+      { id: 3, name: "GSAP" },
+      { id: 4, name: "Sass" },
     ],
   },
   {
     id: 4,
-    name: "Electronics & Gadgets Store",
+    name: "Plataforma de Roblox Lua",
     description:
-      "A multi-category online shop featuring electronics, home appliances, and gaming gear with special offers.",
-    href: "",
-    image: "/assets/projects/electronics-store.jpg",
-    bgImage: "/assets/backgrounds/poster.jpg",
+      "Aporte a desarrollo de juegos en Roblox utilizando el lenguaje Lua.",
+    href: "#privado",
+    image: "/assets/projects/roblox.jpg",
+    bgImage: "/assets/backgrounds/medical.jpg",
     frameworks: [
-      { id: 1, name: "Vue.js" },
-      { id: 2, name: "Laravel" },
-      { id: 3, name: "MySQL" },
-      { id: 4, name: "SCSS" },
+      { id: 1, name: "Lua" },
+      { id: 2, name: "Blender" },
+      { id: 3, name: "C+" },
+      { id: 4, name: "VFX" },
     ],
   },
   {
     id: 5,
-    name: "Home Decor Marketplace",
+    name: "Mercado de Decoración del Hogar",
     description:
-      "A curated collection of designer home decor items, including furniture and artisan vases.",
-    href: "",
+      "Curaduría ultra-exclusiva de mobiliario FF&E y piezas statement. Estética 'quiet luxury' con acabados high-end diseñados para espacios de élite. El nuevo estándar 'old money' que define la vanguardia y el lujo silencioso.",
+    href: "https://terrene-ff-e.netlify.app",
     image: "/assets/projects/home-decor-store.jpg",
     bgImage: "/assets/backgrounds/table.jpg",
     frameworks: [
@@ -156,26 +155,31 @@ export const projects = [
   },
   {
     id: 6,
-    name: "Digital Game Store",
+    name: "Software Redes Eléctricas",
     description:
-      "A gaming platform featuring discounted titles, top sellers, and genre-based browsing.",
-    href: "",
+      "Desarrollo de software de ingeniería e interfaces gráficas. Implementación de cálculos matemáticos (Newton-Raphson) y automatización para AutoCAD y software de diseño avanzado.",
+    href: "#privado",
     image: "/assets/projects/game-store.jpg",
     bgImage: "/assets/backgrounds/curtains.jpg",
     frameworks: [
-      { id: 1, name: "Svelte" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Chakra UI" },
+      { id: 1, name: "Python" },
+      { id: 2, name: "Matlab" },
+      { id: 3, name: "C# / C++" },
+      { id: 4, name: "Figma" },
     ],
   },
 ];
 export const socials = [
-  { name: "Instagram", href: "https://www.instagram.com/ali.sanatidev/reels/" },
-  {
-    name: "Youtube",
-    href: "https://www.youtube.com/channel/UCZhtUWTtk3bGJiMPN9T4HWA",
-  },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/ali-sanati/" },
-  { name: "GitHub", href: "https://github.com/Ali-Sanati" },
+  { name: "Instagram", href: "https://www.instagram.com/duval_dubai/" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/duval-rojas-05a5b0372/" },
+  { name: "GitHub", href: "https://github.com/DuvalAdrian" },
 ];
+
+export const userDetails = {
+  name: "Duval Adrian",
+  tagline: "Arquitectura de Software & Diseño Sensorial",
+  email: "duvaladrian@gmail.com"
+};
+
+export const name = "Duval Adrian";
+export const role = "Desarrollador Full Stack";

@@ -1,4 +1,19 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;900&display=swap');
+
+:root {
+  --cyan: #00f2ff;
+  --bg: #050505;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: 'Inter', sans-serif;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+@import url('https://fonts.googleapis.com/css2?family=Monument+Extended:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neue+Montreal:wght@400;500;600;700&display=swap');
 
 /* Amiamie Regular */
 @font-face {
@@ -107,8 +122,8 @@
 }
 
 body {
-  background: #e5e5e0;
-  color: black;
+  background: #0A0A0A;
+  color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: var(--font-amiamie);
@@ -132,5 +147,49 @@ body {
 
 @utility contact-text-responsive {
   @apply text-[42px] sm:text-[52px] md:text-[62px] lg:text-[100px];
+}
+
+/* Glassmorphism styles */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+/* Cursor magnético personalizado (opcional) */
+.custom-cursor {
+  mix-blend-difference: difference;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Optimización de Spline Viewer */
+spline-viewer {
+  background: transparent !important;
+  filter: saturate(1.2) contrast(1.1);
+}
+
+/* Efecto de Grain (Distorsión de Ruido) */
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxmaWx0ZXIgaWQ9Im5vaXNlIj4KICAgICAgPGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuOSIgbnVtT2N0YXZlcz0iNCIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuNCIvPgo8L3N2Zz4K');
+  opacity: 0.1;
+  z-index: 9999;
 }
 

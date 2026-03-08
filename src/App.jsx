@@ -8,6 +8,7 @@ import About from "./sections/About";
 import Works from "./sections/Works";
 import ContactSummary from "./sections/ContactSummary";
 import Contact from "./sections/Contact";
+import { CustomCursor } from "./components/CustomCursor";
 import { useProgress } from "@react-three/drei";
 
 const App = () => {
@@ -19,6 +20,17 @@ const App = () => {
       setIsReady(true);
     }
   }, [progress]);
+
+  // Fallback timeout - si no carga en 8 segundos, mostrar la app
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isReady) {
+        setIsReady(true);
+      }
+    }, 8000); // 8 segundos de timeout
+
+    return () => clearTimeout(timer);
+  }, [isReady]);
 
   return (
     <ReactLenis root className="relative w-screen min-h-screen overflow-x-auto">
@@ -40,6 +52,8 @@ const App = () => {
           isReady ? "opacity-100" : "opacity-0"
         } transition-opacity duration-1000`}
       >
+        <div className="grain"></div>
+        <CustomCursor />
         <Navbar />
         <Hero />
         <ServiceSummary />
