@@ -4,11 +4,10 @@ import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 const Hero = () => {
   return (
     <section id="home" className="relative w-full min-h-screen bg-[#050505] flex flex-col justify-center overflow-hidden">
-      {/* HUD Superior - Estética de Ingeniería */}
-      <div className="absolute top-10 left-10 z-30 hidden md:block">
-        <div className="flex items-center gap-4 backdrop-blur-md bg-black/20 rounded-full px-4 py-2 border border-white/10">
-          <span className="w-2 h-2 bg-[#00f2ff] rounded-full animate-pulse shadow-lg shadow-[#00f2ff]/50" />
-          <p className="font-mono text-[10px] text-white/80 tracking-[0.3em] uppercase">
+      <div className="absolute top-4 left-4 md:top-10 md:left-10 z-30">
+        <div className="flex items-center gap-2 md:gap-4 backdrop-blur-md bg-black/20 rounded-full px-2 py-1 md:px-4 md:py-2 border border-white/10">
+          <span className="w-1 h-1 md:w-2 md:h-2 bg-[#00f2ff] rounded-full animate-pulse shadow-lg shadow-[#00f2ff]/50" />
+          <p className="font-mono text-[8px] md:text-[10px] text-white/80 tracking-[0.2em] md:tracking-[0.3em] uppercase">
             Duval Adrian // Portfolio v3.0 // 2026
           </p>
         </div>

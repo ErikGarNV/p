@@ -11,6 +11,17 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   useGSAP(() => {
     if (isOpen) {
       gsap.to(menuContentRef.current, {
@@ -64,7 +75,7 @@ const Navbar = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 w-full max-w-7xl mx-auto">
           <div className="flex flex-col gap-4">
             {/* Logo D.A solo visible en el menú */}
-            <a href="/" className="text-white font-black text-6xl tracking-tighter uppercase mb-12">
+            <a href="/" className="text-white font-black text-4xl md:text-6xl tracking-tighter uppercase mb-12">
               D<span className="text-[#00f2ff]">.</span>A
             </a>
             <p className="font-mono text-[#00f2ff] text-xs tracking-[0.5em] uppercase mb-8">Navegación</p>

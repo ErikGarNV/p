@@ -63,7 +63,7 @@ Cuando no estoy en producción:
           ref={imgRef}
           src="images/man.jpg"
           alt="man"
-          className="w-md rounded-3xl"
+          className="w-full lg:w-1/2 rounded-3xl"
         />
         <AnimatedTextLines text={aboutText} className={"w-full"} />
       </div>
