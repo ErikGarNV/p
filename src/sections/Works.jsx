@@ -82,6 +82,7 @@ const Works = () => {
         text={text}
         textColor={"text-white"}
         withScrollTrigger={true}
+        className="text-[8vw] md:text-[6vw] lg:text-[4vw]"
       />
 
       <div id="works-container" className="container mx-auto px-6 md:px-12 mt-20 flex flex-col">
@@ -106,14 +107,14 @@ const Works = () => {
               <span className="font-mono text-xs text-[#00f2ff] mt-2 shrink-0">
                 0{index + 1}
               </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-[0.9] transition-colors duration-500 group-hover:text-[#00f2ff] break-words">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-[0.9] transition-colors duration-500 group-hover:text-[#00f2ff] break-words">
                 {project.name}
               </h2>
             </div>
 
             {/* Descripción */}
             <div className="md:w-[35%] shrink-0 px-0 md:px-8">
-              <p className="text-white/60 text-sm md:text-base font-light leading-relaxed text-balance">
+              <p className="text-white/60 text-xs sm:text-sm md:text-base font-light leading-relaxed text-balance">
                 {project.description}
               </p>
             </div>
